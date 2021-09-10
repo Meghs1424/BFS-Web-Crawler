@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup as bs
 
-start_URL = 'https://www.vit.ac.in'
+start_URL = 'https://www.geeksforgeeks.org/'
 list_URL = []
 soup_dict = {}
 list_URL.append(start_URL)
@@ -19,10 +19,11 @@ while(len(list_URL) > 0 and len(list_URL)< 150):
             print('Skip-Present')
             list_URL.pop(0)
             continue
-        #print('Not in present already')
+        print('Not in present already')
         html_text = r.text
         soup = bs(html_text, 'html.parser')
         soup_dict[URL] = soup
+        print(URL)
         URL_tags = soup.find_all()
         #URLs_in_this_URL = [tag.find('a').get('href','') if tag.find('a') else '' for tag in URL_tags]
         URLs_in_this_URL = []
